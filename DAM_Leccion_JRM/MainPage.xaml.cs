@@ -25,8 +25,16 @@ namespace DAM_Leccion_JRM
         }
 
         public void ejecutar() {
-            PersonaModel personaModel = new PersonaModel();
-            personaModel.Nombre = "Hola estoy aqui";
+            PersonaModel personaModel = new PersonaModel() {
+                Nombre = "Hola estoy aqui",
+
+            };
+
+            Binding personaBinding = new Binding();
+            personaBinding.Source = personaModel; //Origen
+            personaBinding.Path = "Nombre";
+            txtNombre.SetBinding(Entry.TextProperty, personaBinding); //Destino
+
 
             txtNombre.Text = personaModel.Nombre;
             //txtNombre.Text = "Hola estoy aqui";   

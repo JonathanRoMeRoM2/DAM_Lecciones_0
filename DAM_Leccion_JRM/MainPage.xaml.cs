@@ -1,4 +1,4 @@
-﻿using DAM_Leccion_JRM.ViewModel;
+﻿using DAM_Leccion_JRM.Model;
 
 namespace DAM_Leccion_JRM
 {
@@ -6,26 +6,36 @@ namespace DAM_Leccion_JRM
     {
         int count = 0;
 
+        public object CounterBtn { get; private set; }
+
         public MainPage()
         {
             InitializeComponent();
             ejecutar();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void InitializeComponent()
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            throw new NotImplementedException();
+            ejecutar();
         }
 
-        public void ejecutar() {
-            PersonaModel personaModel = new PersonaModel() {
+        //private void OnCounterClicked(object sender, EventArgs e)
+        //{
+        //    count++;
+
+        //    if (count == 1
+        //        CounterBtn.Text = $"Clicked {count} time";
+        //    else
+        //        CounterBtn.Text = $"Clicked {count} times";
+
+        //    SemanticScreenReader.Announce(CounterBtn.Text);
+        //}
+
+        public void ejecutar()
+        {
+            PersonaModel personaModel = new PersonaModel()
+            {
                 Nombre = "Hola estoy aqui",
 
             };
@@ -33,17 +43,16 @@ namespace DAM_Leccion_JRM
             Binding personaBinding = new Binding();
             personaBinding.Source = personaModel; //Origen
             personaBinding.Path = "Nombre";
-            txtNombre.SetBinding(Entry.TextProperty, personaBinding); //Destino
+            //txtNombre.SetBinding(Entry.TextProperty, personaBinding); //Destino
 
 
-            txtNombre.Text = personaModel.Nombre;
             //txtNombre.Text = "Hola estoy aqui";   
         }
-
-        private void btnAceptar_Clicked(object sender, EventArgs e)
+        private void Aceptar_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Asistente del sistema","Se ha guardado el registro en la DB","Aceptar");
+            DisplayAlert("Asistente del sistema", "Se ha guardado el registro en la bd", "Aceptar");
         }
+
     }
 
 }
